@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Login - Inventory Management System</title>
+    <title>Login - Abramak Management System</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('admin')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

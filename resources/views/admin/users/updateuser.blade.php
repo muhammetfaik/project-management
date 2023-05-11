@@ -1,7 +1,7 @@
 @extends('admin.master');
 
 @section('page-title')
-    Inventory | User Update
+    Abramak | User Update
 @endsection
 
 @section('content-heading')

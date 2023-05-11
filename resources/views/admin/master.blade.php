@@ -58,8 +58,8 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
+                 <!--<div class="panel panel-primary">
+                   <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
                                 <i class="fa fa-comments fa-5x"></i>
@@ -77,18 +77,18 @@
                             <div class="clearfix"></div>
                         </div>
                     </a>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-green">
+                <!--<div class="panel panel-green">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
                                 <i class="fa fa-tasks fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">12</div>
-                                <div>New Tasks!</div>
+                               <div class="huge">12</div>
+                               <div style="font-weight: bold; font-size: 50px;">ASELSAN</div>
                             </div>
                         </div>
                     </div>
@@ -100,9 +100,9 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div>-->
             <div class="col-lg-3 col-md-6">
-                <div class="panel panel-yellow">
+                <!--<div class="panel panel-yellow">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -121,9 +121,9 @@
                             <div class="clearfix"></div>
                         </div>
                     </a>
-                </div>
+                </div>-->
             </div>
-            <div class="col-lg-3 col-md-6">
+            <!--<div class="col-lg-3 col-md-6">
                 <div class="panel panel-red">
                     <div class="panel-heading">
                         <div class="row">
@@ -144,7 +144,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div>-->
         </div>
         <!-- /.row -->
     @yield('main-content')

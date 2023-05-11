@@ -1,7 +1,7 @@
 @extends('admin.master');
 
 @section('page-title')
-    Inventory | Add New Role
+    Abramak | Add New Role
 @endsection
 
 @section('content-heading')

@@ -51,7 +51,31 @@ class UserController extends Controller
         $result = DB::select('select * from role');
         return view('admin.role.role', compact('result'));
     }
+    public function projelerform()
+    {
+        $result = DB::select('select * from Projeler');
+        return view('admin.users.projeform', compact('result'));
+    }
 
+    public function projelersave(Request $request)
+    {
+        $projeadi = $request->projeadi;
+       
+
+        $results = DB::insert('insert into Projeler(projeadi) values (?)', [$projeadi]);
+
+        if ($results != false) {
+            return redirect('/projeler')->with('regScsMsg', 'Kayıt Başarılı');
+        } else {
+            return redirect('/projeler')->with('regErrMsg', 'Kayıt Başarız!!');
+        }
+    }
+
+    public function showprojeler()
+    {
+        $record = DB::table('Projeler')->get();
+        return view('admin.stockin.stockin', ['record' => $record]);
+    }
     public function editRole($id)
     {
         $results = DB::table('role')->where('id', $id)->first();
@@ -109,6 +133,7 @@ class UserController extends Controller
             return redirect('/registration')->with('regErrMsg', 'Registration Failed!!');
         }
     }
+    
 
     public function userList()
     {
@@ -167,19 +192,24 @@ class UserController extends Controller
 
     public function stockIn(Request $request)
     {
-        $supid = $request->supname;
-        $lotname = $request->lotname;
-        $coil = $request->coil;
+        $parcano = $request->parcano;
+        $malzemeadi = $request->malzemeadi;
+        $miktar = $request->miktar;
         $note = $request->note;
-        $tweight = $request->tweight;
-        $rent = $request->rent;
-        $totalrent = $request->totalrent;
-        $truck = $request->truck;
+        $marka = $request->marka;
+        $model = $request->model;
+        $projeadi = $request->projeadi;
+        $serino = $request->serino;
+        $fiyat = $request->fiyat;
+        $tedarikci = $request->tedarikci;
+        $siparisveren = $request->siparisveren;
+        $supname = $request->supname;
+
 
 //        $user = DB::table('registration')->where('id', $supid)->first();
 //        $supname = $user->name;
 
-        $results = DB::insert('insert into stockin(supid, lotname, coil, note, tweight, rent, totalrent, truck) values (?, ?, ?, ?, ?, ?, ?, ?)', [$supid, $lotname, $coil, $note, $tweight, $rent, $totalrent, $truck]);
+        $results = DB::insert('insert into stockin(parcano, malzemeadi, miktar, note, marka, model, projeadi, serino, fiyat, tedarikci, siparisveren, supname) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$parcano, $malzemeadi, $miktar, $note, $marka, $model, $projeadi, $serino, $fiyat, $tedarikci, $siparisveren, $supname]);
 
         if ($results != false) {
             return redirect('/stockin')->with('stockScsMsg', 'StockIn information save Successfully');
@@ -194,10 +224,11 @@ class UserController extends Controller
 
     public function stockInList()
     {
-        $result = DB::table('stockin')
-            ->join('registration', 'stockin.supid', '=', 'registration.id')
-            ->select('stockin.*', 'registration.name')
-            ->get();
+        /*$result = DB::table('stockin')
+            ->join('registration', 'stockin.id', 'registration.id')
+            ->select('stockin.*')
+            ->get();*/
+        $result = DB::table('stockin')->get();
         return view('admin.stockin.stockinlist', compact('result'));
     }
 
@@ -246,9 +277,9 @@ class UserController extends Controller
 
     public function showStockOut()
     {
-        $suppliers = DB::table('registration')->get();
+        $registration = DB::table('registration')->get();
         $selltype = DB::table('sell')->get();
-        return view('admin.stockout.stockout', ['suppliers' => $suppliers, 'selltype' => $selltype]);
+        return view('admin.stockout.stockout', ['registration' => $registration, 'selltype' => $selltype]);
     }
 
     public function getLot($id)
@@ -265,15 +296,20 @@ class UserController extends Controller
 
     public function stockOut(Request $request)
     {
-        $supid = $request->supname;
-        $lotid = $request->lotname;
-        $lotnumber = $request->lotnumber;
-        $selltype = $request->selltype;
-        $typecost = $request->typecost;
-        $tweight = $request->tweight;
-        $totalcost = $request->totalcost;
+        $parcano = $request->parcano;
+        $malzemeadi = $request->malzemeadi;
+        $miktar = $request->miktar;
+        $marka = $request->marka;
+        $model = $request->model;
+        $serino = $request->serino;
+        $tedarikci = $request->tedarikci;
+        $note = $request->note;
+        $supname = $request->supname;
+        $fiyat = $request->fiyat;
+        $siparisveren = $request->siparisveren;
+        $projeadi = $request->projeadi;
 
-        $results = DB::insert('insert into stockout(supid, lotid, lotnumber, selltype, typecost, tweight, totalcost) values (?, ?, ?, ?, ?, ?, ?)', [$supid, $lotid, $lotnumber, $selltype, $typecost, $tweight, $totalcost]);
+        $results = DB::insert('insert into stockout(parcano, malzemeadi, miktar, marka, model, serino, tedarikci,note,supname,fiyat,siparisveren,projeadi) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$parcano,$malzemeadi,$miktar,$marka,$model,$serino,$tedarikci,$note,$supname,$fiyat,$siparisveren,$projeadi]);
 
         if ($results != false) {
             return redirect('/stockout')->with('stockOutScsMsg', 'StockOut information save Successfully');
@@ -286,14 +322,47 @@ class UserController extends Controller
 
     }
 
+  
+
+    public function showagem()
+    {
+        $sonuc = DB::table('stockin')->where('projeadi', '=', 'agem')->get();
+        return view('admin.stockin.fixture',compact('sonuc'));
+    }
+
+    public function shownijeryaopv()
+    {
+        $sonuc = DB::table('stockin')->where('projeadi','=','nijeryaopv')->get();
+        return view('admin.stockin.fixture',compact('sonuc'));
+    }
+
+    public function showukraynakorvetbir()
+    {
+        $sonuc = DB::table('stockin')->where('projeadi','=','ukraynakorvetbir')->get();
+        return view('admin.stockin.fixture',compact('sonuc'));
+    }
+
+    public function showukraynakorvetiki()
+    {
+        $sonuc = DB::table('stockin')->where('projeadi','=','ukraynakorvetiki')->get();
+        return view('admin.stockin.fixture',compact('sonuc'));
+    }
+
+    public function showlibyaelliyedimetre()
+    {
+        $sonuc = DB::table('stockin')->where('projeadi','=','libyaelliyedimetre')->get();
+        return view('admin.stockin.fixture',compact('sonuc'));
+    }
+
     public function stockOutList()
     {
-        $result = DB::table('stockout')
+        /*$result = DB::table('stockout')
             ->join('registration', 'stockout.supid', '=', 'registration.id')
             ->join('stockin', 'stockout.lotid', '=', 'stockin.id')
             ->join('sell', 'stockout.selltype', '=', 'sell.id')
             ->select('stockout.*', 'registration.name as suppname', 'stockin.lotname', 'sell.sellingType', 'sell.sellingCost')
-            ->get();
+            ->get();*/
+        $result = DB::table('stockout')->get();
         return view('admin.stockout.stockoutlist', compact('result'));
     }
 
@@ -339,7 +408,11 @@ class UserController extends Controller
         }
     }
 
-
+    public function test()
+    {
+        $sonuc = DB::table('Projeler')->get(); //
+        return view('admin.role.test',compact('sonuc'));
+    }
     /*
      * Invoice
      */

@@ -1,11 +1,11 @@
 @extends('admin.master');
 
 @section('page-title')
-    Inventory | Registration Form
+    Abramak |  Kayıt Formu
 @endsection
 
 @section('content-heading')
-    Registration Form
+    Kayıt Formu
 @endsection
 
 @section('main-content')
@@ -13,7 +13,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    General Information
+                    Genel Bilgiler
                 </div>
                 @if(Session::get('regScsMsg'))
                     <div class="alert alert-success">
@@ -32,35 +32,35 @@
                             <form role="form" action="{{ url('registration') }}" method="post">
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input class="form-control" type="text" name="name" placeholder="Enter name"
+                                    <label>Personel Adı</label>
+                                    <input class="form-control" type="text" name="name" placeholder="Personel İsim Giriniz"
                                            autofocus
                                            required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Cell</label>
-                                    <input class="form-control" type="text" name="cell" placeholder="Enter cell number"
+                                    <label>Telefon No</label>
+                                    <input class="form-control" type="text" name="cell" placeholder="Telefon Numarası Giriniz"
                                            autofocus
                                            required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input class="form-control" type="email" name="email" placeholder="Enter email">
+                                    <input class="form-control" type="email" name="email" placeholder="Email Giriniz">
                                 </div>
                                 <div class="form-group">
-                                    <label>Select Role</label>
+                                    <label>Görev</label>
                                     <select class="form-control" name="role" required>
-                                            <option value="">Select</option>
+                                            <option value="">Görev Seçiniz</option>
                                         @foreach($roles as $role)
                                             <option value="{{ $role->id }}">{{ $role->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Address</label>
+                                    <label>Adres</label>
                                     <textarea class="form-control" name="address" rows="3"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Register</button>
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
                             </form>
                         </div>
                         <!-- /.col-lg-6 (nested) -->

@@ -1,7 +1,7 @@
 @extends('admin.master');
 
 @section('page-title')
-    Inventory | StockOut Form
+    Abramak | StockOut Form
 @endsection
 
 @section('content-heading')
@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    General Information
+                    Genel Bilgiler
                 </div>
 
                 @if(Session::get('errUpdateStockOutMsg'))

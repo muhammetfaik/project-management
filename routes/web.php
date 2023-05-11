@@ -35,6 +35,18 @@ Route::post('/registration', 'UserController@registration');
 //Userlist
 Route::get('users', 'UserController@userList');
 
+Route::get('/showagem','UserController@showagem')->name('showagem');
+
+Route::get('/shownijeryaopv','UserController@shownijeryaopv')->name('shownijeryaopv');
+
+Route::get('/showukraynakorvetbir','UserController@showukraynakorvetbir')->name('showukraynakorvetbir');
+
+Route::get('/showukraynakorvetiki','UserController@showukraynakorvetiki')->name('showukraynakorvetiki');
+
+Route::get('/showlibyaelliyedimetre','UserController@showlibyaelliyedimetre')->name('showlibyaelliyedimetre');
+
+
+
 //Update User
 Route::get('/updateuser/{id}', 'UserController@editUser');
 Route::post('/updateuser/{id}', 'UserController@updateUser');
@@ -47,6 +59,7 @@ Route::get('deleteuser/{id}', 'UserController@deleteUser');
  */
 
 Route::get('/stockin', 'UserController@showStockIn')->name('stockin');
+Route::get('/stockin', 'UserController@showProjeler')->name('stockin');
 Route::post('/stockin', 'UserController@stockIn');
 
 //StockIn List
@@ -70,6 +83,8 @@ Route::post('/stockout', 'UserController@stockOut');
 
 //StockOut List
 Route::get('stockoutlist', 'UserController@stockOutList');
+Route::get('projeler','UserController@projelerform');
+Route::post('projeler', 'UserController@projelersave');
 
 //Update StockOut
 Route::get('updatestockout/{id}', 'UserController@editStockOut');
@@ -106,3 +121,5 @@ Route::get('deleterole/{id}', 'UserController@deleteRole');
 Route::get('/invoice/{id}', 'UserController@invoice');
 
 
+//test
+Route::get('/test','UserController@test');

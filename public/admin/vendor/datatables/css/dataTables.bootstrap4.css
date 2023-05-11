@@ -146,7 +146,7 @@ div.dataTables_scrollFoot table {
   border-top: none;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 900px) {
   div.dataTables_wrapper div.dataTables_length,
   div.dataTables_wrapper div.dataTables_filter,
   div.dataTables_wrapper div.dataTables_info,
@@ -155,7 +155,7 @@ div.dataTables_scrollFoot table {
   }
 }
 table.dataTable.table-condensed > thead > tr > th {
-  padding-right: 20px;
+  padding-right: 100px;
 }
 table.dataTable.table-condensed .sorting:after,
 table.dataTable.table-condensed .sorting_asc:after,

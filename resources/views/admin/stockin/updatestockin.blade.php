@@ -1,7 +1,7 @@
 @extends('admin.master');
 
 @section('page-title')
-    Inventory | Update StockIn Form
+    Abramak | Update StockIn Form
 @endsection
 
 @section('content-heading')

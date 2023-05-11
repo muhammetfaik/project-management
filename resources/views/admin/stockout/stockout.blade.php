@@ -1,11 +1,11 @@
 @extends('admin.master');
 
 @section('page-title')
-    Inventory | StockOut Form
+    Abramak | Stok Yok Bilgileri
 @endsection
 
 @section('content-heading')
-    StockOut Form
+    Stok Yok Bilgileri
 @endsection
 
 @section('main-content')
@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    General Information
+                    Genel Bilgiler
                 </div>
                 @if(Session::get('stockOutScsMsg'))
                     <div class="alert alert-success">
@@ -33,73 +33,95 @@
                             {{ csrf_field() }}
                             <div class="col-lg-6">
                                 <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <label>Supplier Name</label>
+                                    <div class="form-group">
+                                        <label>Sağlayıcı Adı</label>
                                         <select class="form-control" name="supname" required>
-                                            <option value="" required>-- Select --</option>
-                                            @foreach($suppliers as $supp)
-                                                <option value="{{ $supp->id }}">{{ $supp->name }}</option>
+                                            <option value="" required>Select</option>
+                                            @foreach($registration as $reg)
+                                                <option value="{{ $reg->id }}">{{ $reg->name }}</option>
                                             @endforeach
                                         </select>
-                                        {{--<br>--}}
-                                        {{--<a href="{{ url('registration') }}" class="btn btn-primary">+ Add New</a>--}}
+                                        <br>
+                                       
                                     </div>
-                                    <div class="form-group col-lg-6">
-                                        <label>Lot Name</label>
-                                        <select class="form-control" name="lotname" required>
-                                            <option>-- Select --</option>
-                                        </select>
-                                    </div>
+                                  
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Lot Number</label>
-                                    <input type="text" class="form-control" name="lotnumber"
-                                           placeholder="Enter lot number"
+                                    <label>Parça No</label>
+                                    <input type="text" class="form-control" name="parcano"
+                                           placeholder="Parça No Giriniz"
                                            required>
                                 </div>
-                                <button type="submit" class="btn btn-primary pull-right" style="margin-top: 25px;">+ Add
-                                    Stock Out
-                                </button>
-                            </div>
-                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Malzeme Adı</label>
+                                    <input type="text" class="form-control" name="malzemeadi"
+                                           placeholder="Malzeme Adı Giriniz"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Miktar</label>
+                                    <input type="text" class="form-control" name="miktar"
+                                           placeholder="Miktar Giriniz"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Marka</label>
+                                    <input type="text" class="form-control" name="marka"
+                                           placeholder="Marka Giriniz"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Model</label>
+                                    <input type="text" class="form-control" name="model"
+                                           placeholder="Model Giriniz"
+                                           required>
+                                </div>
                                 <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <label>Selling Type</label>
-                                        <select class="form-control" name="selltype" required>
-                                            <option value="">-- Select --</option>
-                                            @foreach($selltype as $selltype)
-                                                <option value="{{ $selltype->id }}">{{ $selltype->sellingType }}</option>
-                                            @endforeach
-                                            {{--<option value="full-coil">Full Coil</option>--}}
-                                            {{--<option value="full-machine-cutting">Full Coil - Machine Cutting</option>--}}
-                                            {{--<option value="hand-cutting">Full Hand Cutting</option>--}}
-                                            {{--<option value="partial-machine-cutting">Partial Machine Cutting</option>--}}
-                                            {{--<option value="partial-hand-cutting">Partial Hand Cutting</option>--}}
-                                        </select>
-                                    </div>
-                                    <label>Type Cost</label>
-                                    <div class="form-group input-group">
-                                        <input type="text" id="typecost" onchange="rentCalculation()"
-                                               class="form-control"
-                                               name="typecost" value="" step="any" required>
-                                        <span class="input-group-addon">Taka</span>
-                                    </div>
+                                    <label>Fiyat</label>
+                                    <input type="text" class="form-control" name="fiyat"
+                                           placeholder="Fiyat Giriniz"
+                                           required>
+                                  
+                                </div>
+                                <div class="form-group">
+                                    <label>Seri No</label>
+                                    <input type="text" class="form-control" name="serino"
+                                           placeholder="Seri No Giriniz"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tedarikçi</label>
+                                    <input type="text" class="form-control" name="tedarikci"
+                                           placeholder="Tedarikçi Firma Giriniz"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sipariş Veren</label>
+                                    <input type="text" class="form-control" name="siparisveren"
+                                           placeholder="Tedarikçi Firma Giriniz"
+                                           required>
                                 </div>
 
-                                <label>Total Weight</label>
-                                <div class="form-group input-group">
-                                    <input type="number" id="tweight" onkeyup="rentCalculation()" class="form-control"
-                                           name="tweight" step="any" required>
-                                    <span class="input-group-addon">Ton</span>
+                                <div class="form-group">
+                                    <label>Proje Adı</label>
+                                    <input type="text" class="form-control" name="projeadi"
+                                           placeholder="Proje Adını Giriniz"
+                                           required>
                                 </div>
-                                <label>Stock Total Rent</label>
-                                <div class="form-group input-group">
-                                    <input type="number" id="totalcost" class="form-control" name="totalcost"
-                                           step="any" required>
-                                    <span class="input-group-addon">Taka</span>
+
+                                <div class="form-group">
+                                    <label>Not</label>
+                                    <input type="text" class="form-control" name="note"
+                                           placeholder="Not Giriniz"
+                                           required>
                                 </div>
+                                
+                                <button type="submit" class="btn btn-primary pull-right" style="margin-top: 25px;">+ 
+                                    Stokta Yok Oluştur
+                                </button>
                             </div>
+                            
                         </form>
                         <!-- /.col-lg-6 (nested) -->
 
@@ -175,4 +197,5 @@
     </script>
 
 @endsection
+
 
