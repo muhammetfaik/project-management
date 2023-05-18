@@ -52,7 +52,11 @@
                                            required>
                                 </div>
 
-                          
+                                <div class="form-group">
+                                    <label>Kritik Seviye</label>
+                                    <input type="int" class="form-control" name="kritikseviye" placeholder="Kritik Seviyeyi Giriniz"
+                                           required>
+                                </div>
                                 
                                 <div class="form-group">
                                     <label>Açıklama</label>
@@ -122,6 +126,7 @@
                                     <input type="text" class="form-control" name="projeadi" placeholder="Sipariş Veren İsim"
                                            required>
                                 </div>
+                               
                                 
                                 <a href="{{ url('registration') }}" class="btn btn-primary">+ Yeni Sağlayıcı Ekle</a>
                             

@@ -20,9 +20,9 @@
                     <li>
                         <a href="{{ url('role') }}"><i class="fa fa-sitemap fa-fw"></i> Projeler</a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="{{ url('projeler') }}"><i class="fa fa-sitemap fa-fw"></i> Yeni Proje Ekle</a>
-                    </li>
+                    </li>-->
                 </ul>
             
                 

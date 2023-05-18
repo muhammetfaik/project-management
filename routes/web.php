@@ -45,7 +45,9 @@ Route::get('/showukraynakorvetiki','UserController@showukraynakorvetiki')->name(
 
 Route::get('/showlibyaelliyedimetre','UserController@showlibyaelliyedimetre')->name('showlibyaelliyedimetre');
 
+Route::get('/show/{projeadi}','UserController@show');
 
+Route::get('/test/{$projeadi}','UserController@test');
 
 //Update User
 Route::get('/updateuser/{id}', 'UserController@editUser');
@@ -120,6 +122,6 @@ Route::get('deleterole/{id}', 'UserController@deleteRole');
 //Invoice Route
 Route::get('/invoice/{id}', 'UserController@invoice');
 
-
 //test
-Route::get('/test','UserController@test');
+Route::get('/kritikseviye','UserController@kritikseviye');
+

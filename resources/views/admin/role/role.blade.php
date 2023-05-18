@@ -39,16 +39,16 @@
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
-                    <div id="ornek" class="row">
+                    <!-- LİSTE OLMAZ İSE VARSAYILAN TABLOLAR BU -->
+                   <!--<div  class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                          <!--  <i class="fa fa-tasks fa-5x"></i>-->
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                           <!-- <div class="huge">12</div>-->
+                                           
                                            <div  style="font-weight: bold; font-size: 50px;">LİBYA</div>
                                         </div>
                                     </div>
@@ -66,10 +66,8 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                          <!--  <i class="fa fa-tasks fa-5x"></i>-->
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                           <!-- <div class="huge">12</div>-->
                                            <div  style="font-weight: bold; font-size: 50px;">AGEM</div>
                                         </div>
                                     </div>
@@ -87,10 +85,8 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                          <!--  <i class="fa fa-tasks fa-5x"></i>-->
                                         </div>
                                         <div class="col-xs-6 text-right">
-                                           <!-- <div class="huge">12</div>-->
                                            <div  style="font-weight: bold; font-size: 27px;">NİJERYA OPV</div>
                                         </div>
                                     </div>
@@ -108,10 +104,8 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                          <!--  <i class="fa fa-tasks fa-5x"></i>-->
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                           <!-- <div class="huge">12</div>-->
                                            <div  style="font-weight: bold; font-size: 28px;">UKRAYNA KORVET-1</div>
                                         </div>
                                     </div>
@@ -129,10 +123,8 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                          <!--  <i class="fa fa-tasks fa-5x"></i>-->
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                           <!-- <div class="huge">12</div>-->
                                            <div  style="font-weight: bold; font-size: 28px;">UKRAYNA KORVET-2</div>
                                         </div>
                                     </div>
@@ -150,10 +142,8 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                          <!--  <i class="fa fa-tasks fa-5x"></i>-->
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                           <!-- <div class="huge">12</div>-->
                                            <div  style="font-weight: bold; font-size: 28px;">YENİ PROJE</div>
                                         </div>
                                     </div>
@@ -168,16 +158,42 @@
                             </div>
                         </div>
                       
-                    </div>
+                    </div> -->
+                 
                     <!-- /.row -->
-               
+                    <?php $count = 1; ?>
+                    @foreach($result as $data)
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                      <!--  <i class="fa fa-tasks fa-5x"></i>-->
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                       <!-- <div class="huge">12</div>-->
+                                       <div  style="font-weight: bold; font-size: 50px;">{{ $data->projeadi }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <!--$data->projeadi route mantığını /test/:id mantığına dönüştür.-->
+                                    <a style="color: black;" href="show/{{$data->projeadi}}" class="pull-left">Stokları İncele</a>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <?php $count += 1; ?>
+                    @endforeach
                 <!-- /.row -->
                 <!--</div>-->
                 <!-- /.panel-body -->
             </div>
             <!-- /.panel -->
         </div>
-       <button onclick="createClick()"  class="btn btn-primary">Proje Ekle</button>
+       <button class="btn btn-primary"><a href="{{ url('projeler') }}"> Yeni Proje Ekle</a></button>
     </div>
 
     <script>

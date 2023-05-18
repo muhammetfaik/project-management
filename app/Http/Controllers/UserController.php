@@ -48,7 +48,7 @@ class UserController extends Controller
 
     public function roleList()
     {
-        $result = DB::select('select * from role');
+        $result = DB::select('select * from Projeler');
         return view('admin.role.role', compact('result'));
     }
     public function projelerform()
@@ -195,6 +195,7 @@ class UserController extends Controller
         $parcano = $request->parcano;
         $malzemeadi = $request->malzemeadi;
         $miktar = $request->miktar;
+        $kritikseviye = $request->kritikseviye;
         $note = $request->note;
         $marka = $request->marka;
         $model = $request->model;
@@ -209,7 +210,7 @@ class UserController extends Controller
 //        $user = DB::table('registration')->where('id', $supid)->first();
 //        $supname = $user->name;
 
-        $results = DB::insert('insert into stockin(parcano, malzemeadi, miktar, note, marka, model, projeadi, serino, fiyat, tedarikci, siparisveren, supname) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$parcano, $malzemeadi, $miktar, $note, $marka, $model, $projeadi, $serino, $fiyat, $tedarikci, $siparisveren, $supname]);
+        $results = DB::insert('insert into stockin(parcano, malzemeadi, miktar, note, marka, model, projeadi, serino, fiyat, tedarikci, siparisveren, supname,kritikseviye) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [$parcano, $malzemeadi, $miktar, $note, $marka, $model, $projeadi, $serino, $fiyat, $tedarikci, $siparisveren, $supname, $kritikseviye]);
 
         if ($results != false) {
             return redirect('/stockin')->with('stockScsMsg', 'StockIn information save Successfully');
@@ -229,6 +230,19 @@ class UserController extends Controller
             ->select('stockin.*')
             ->get();*/
         $result = DB::table('stockin')->get();
+        $miktar = DB::table('stockin')->pluck('miktar');
+        $kritikseviye = DB::table('stockin')->pluck('kritikseviye');
+        //select * from stockin where kritikseviye > miktar;
+        
+
+        for($i = 0; $i < $result->count(); $i++ )
+        {
+            if ($kritikseviye[$i] > $miktar[$i])
+            {
+                $result[$i]->miktarasildi = "(Miktar aşıldı)";
+            }
+            
+        }
         return view('admin.stockin.stockinlist', compact('result'));
     }
 
@@ -408,10 +422,10 @@ class UserController extends Controller
         }
     }
 
-    public function test()
+    public function show($projeadi)
     {
-        $sonuc = DB::table('Projeler')->get(); //
-        return view('admin.role.test',compact('sonuc'));
+        $sonuc = DB::table('stockin')->where('projeadi', '=', $projeadi)->get();
+        return view('admin.stockin.fixture',compact('sonuc'));
     }
     /*
      * Invoice
@@ -426,4 +440,7 @@ class UserController extends Controller
         return $pdf->stream('invoice.pdf');
 //        return $pdf->download('invoice.pdf');
     }
+    
+    
+    
 }
