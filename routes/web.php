@@ -125,3 +125,4 @@ Route::get('/invoice/{id}', 'UserController@invoice');
 //test
 Route::get('/kritikseviye','UserController@kritikseviye');
 
+Route::get('/showstockinone/{id}','UserController@showstockinone');

@@ -98,9 +98,9 @@ class UserController extends Controller
 
     public function deleteRole($id)
     {
-        $resutls = DB::delete('delete from role where id = ?', [$id]);
+        $results = DB::delete('delete from role where id = ?', [$id]);
 
-        if ($resutls != false) {
+        if ($results != false) {
             return redirect('/role')->with('deleteRoleMsg', 'Role item deleted successfully');
         } else {
             return redirect('/role')->with('errDeleteRoleMsg', 'Error!! Role item not deleted');
@@ -240,6 +240,7 @@ class UserController extends Controller
             if ($kritikseviye[$i] > $miktar[$i])
             {
                 $result[$i]->miktarasildi = "(Miktar aşıldı)";
+
             }
             
         }
@@ -256,22 +257,33 @@ class UserController extends Controller
 
     public function updateStockIn(Request $request, $id)
     {
-        $suppid = $request->supname;
-        $lotName = $request->lotname;
-        $noOfCoil = $request->coil;
+        $parcano = $request->parcano;
+        $malzemeadi = $request->malzemeadi;
+        $miktar = $request->miktar;
+        $kritikseviye = $request->kritikseviye;
         $note = $request->note;
-        $totaWeight = $request->tweight;
-        $rentPerTon = $request->rent;
-        $totalRent = $request->totalrent;
-        $noOfTruck = $request->truck;
+        $marka = $request->marka;
+        $model = $request->model;
+        $projeadi = $request->projeadi;
+        $serino = $request->serino;
+        $fiyat = $request->fiyat;
+        $tedarikci = $request->tedarikci;
+        $siparisveren = $request->siparisveren;
 
-        $result = DB::update('update stockin set supid = ?, lotname = ?, coil = ?, note = ?, tweight = ?, rent = ?, totalrent = ?, truck = ? where id = ?', [$suppid, $lotName, $noOfCoil, $note, $totaWeight, $rentPerTon, $totalRent, $noOfTruck, $id]);
+
+        $result = DB::update('update stockin set parcano = ?, malzemeadi = ?, miktar = ?, kritikseviye = ?, note = ?, marka = ?, model = ?, projeadi = ?,serino = ?,fiyat = ?,tedarikci = ?,siparisveren = ? where id = ?', [$parcano, $malzemeadi, $miktar, $kritikseviye, $note, $marka, $model, $projeadi, $serino, $fiyat, $tedarikci, $siparisveren, $id]);
 
         if ($result != false) {
             return redirect('/stockinlist')->with('updateStockInMsg', 'StockIn Updated Successfully');
         } else {
             return redirect('/updatestockin/' . $id)->with('errUpdateStockInMsg', 'Error! StockIn not updated.');
         }
+    }
+
+    public function showstockinone($id)
+    {
+        $result = DB::select('select * from stockin  where id = ?', [$id]);
+        return view('admin.stockin.showstockin')->with(['result' => $result]);    
     }
 
     public function deleteStockIn($id)

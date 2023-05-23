@@ -68,27 +68,17 @@
                                 <div class="form-group">
                                     <label>Marka</label>
                                     <input type="text" class="form-control" name="marka" placeholder="Marka Giriniz"
-                                           required>
+                                           >
                                            
                                     
                                 </div>
                                 <div class="form-group">
                                     <label>Model</label>
                                     <input type="text" class="form-control" name="model" placeholder="Model Giriniz"
-                                           required>
+                                           >
                                 </div>
                                
-                                <div class="form-group">
-                                    <label>Sağlayıcı Adı</label>
-                                    <select class="form-control" name="supname" required>
-                                        <option value="" required>Select</option>
-                                        @foreach($record as $rec)
-                                            <option >{{ $rec->projeadi }}</option>
-                                        @endforeach
-                                    </select>
-                                    <br>
-                                   
-                                </div>
+                                
                                 <div class="form-group">
                                     <label>Seri No</label>
                                     <input type="text" class="form-control" name="serino" placeholder="Seri No Giriniz"
@@ -100,8 +90,8 @@
                                            required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Tedarikçi</label>
-                                    <input type="text" class="form-control" name="tedarikci" placeholder="Tedarikçi Giriniz"
+                                    <label>Sağlayıcı Adı</label>
+                                    <input type="text" class="form-control" name="supname" placeholder="Tedarikçi Giriniz"
                                            required>
                                 </div>
                                 <div class="form-group">
@@ -109,18 +99,7 @@
                                     <input type="text" class="form-control" name="siparisveren" placeholder="Sipariş Veren İsim"
                                            required>
                                 </div>                        
-                                
-                                <!--<div class="form-group">
-                                    <label>Sağlayıcı Adı</label>
-                                    <select class="form-control" name="supname" required>
-                                        <option value="" required>Select</option>
-                                        {{-- @foreach($registration as $reg) --}}  
-                                            <option value="{{-- $reg->id --}}">{{-- $reg->name --}}</option>
-                                        {{--  @endforeach --}} 
-                                    </select>
-                                    <br>
-                                   
-                                </div>-->
+                              
                                 <div class="form-group">
                                     <label>Proje Adı</label>
                                     <input type="text" class="form-control" name="projeadi" placeholder="Sipariş Veren İsim"

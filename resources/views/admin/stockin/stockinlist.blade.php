@@ -63,7 +63,7 @@
                         @foreach($result as $data)
                             <tr>
                                 <td>{{ $count }}</td>
-                                <td>{{ $data->parcano }}</td>
+                                <td><a href="{{ url('showstockinone/'.$data->id) }}" style="color:black;">{{ $data->parcano }}</a></td>
                                 <td>{{ $data->malzemeadi }}</td>
                                 <td>{{ $data->miktar }}<div>{{ $data->miktarasildi }}</div></td>
                                 <td>{{ $data->marka }}</td>
@@ -77,7 +77,7 @@
                                 
                                 
 
-                                <td class="text-center"><a href="{{ url('updatestockin/'.$data->id) }}" class="btn btn-primary">Düzenle</a> <a href="{{ url('deletestockin/'.$data->id) }}" class="btn btn-danger" onclick="if (!confirm('Are you sure to delete this item?')) { return false }">Sil</a> </td>
+                                <td class="text-center"><a href="{{ url('updatestockin/'.$data->id) }}" class="btn btn-primary">Düzenle</a> <a href="{{ url('deletestockin/'.$data->id) }}" class="btn btn-danger" onclick="if (!confirm('Are you sure to delete this item?')) { return false }">Sil</a></td>
                                 <?php $count += 1; ?>
                             </tr>
                         @endforeach

@@ -39,132 +39,13 @@
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
-                    <!-- LİSTE OLMAZ İSE VARSAYILAN TABLOLAR BU -->
-                   <!--<div  class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                           
-                                           <div  style="font-weight: bold; font-size: 50px;">LİBYA</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <a style="color: black;" href="{{ route('showlibyaelliyedimetre') }}" class="pull-left">Stokları İncele</a>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-green">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                           <div  style="font-weight: bold; font-size: 50px;">AGEM</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <a style="color: black;" href="{{ route('showagem') }}" class="pull-left">Stokları İncele</a>                                        
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                        </div>
-                                        <div class="col-xs-6 text-right">
-                                           <div  style="font-weight: bold; font-size: 27px;">NİJERYA OPV</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <a style="color: black;" href="{{ route('shownijeryaopv') }}" class="pull-left">Stokları İncele</a>                                        
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-9">
-                            <div class="panel panel-red">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                           <div  style="font-weight: bold; font-size: 28px;">UKRAYNA KORVET-1</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <a style="color: black;" href="{{ route('showukraynakorvetbir') }}" class="pull-left">Stokları İncele</a>                                        
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-9">
-                            <div class="panel panel-red">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                           <div  style="font-weight: bold; font-size: 28px;">UKRAYNA KORVET-2</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <a style="color: black;" href="{{ route('showukraynakorvetiki') }}" class="pull-left">Stokları İncele</a>                                        
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-9">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                           <div  style="font-weight: bold; font-size: 28px;">YENİ PROJE</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">Stokları İncele</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                      
-                    </div> -->
+                    
                  
                     <!-- /.row -->
                     <?php $count = 1; ?>
                     @foreach($result as $data)
                     <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-yellow">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">

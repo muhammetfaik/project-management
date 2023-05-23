@@ -1,11 +1,11 @@
 @extends('admin.master');
 
 @section('page-title')
-    Abramak | Update StockIn Form
+    Abramak | Stok Güncelleme Formu
 @endsection
 
 @section('content-heading')
-    Update StockIn Form
+    Stok Güncelleme Formu
 @endsection
 
 @section('main-content')
@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    StockIn Information
+                    Stokta Bilgileri
                 </div>
                 @if(Session::get('errUpdateStockInMsg'))
                     <div class="alert alert-danger">
@@ -26,73 +26,93 @@
                         <form role="form" action="{{ url('updatestockin/'.$stcInData->id) }}" method="post">
                             {{ csrf_field() }}
                             <div class="col-lg-6">
+                               
                                 <div class="form-group">
-                                    <label>Supplier Name</label>
+                                    <label>Parca No</label>
+                                    <input type="text" class="form-control" name="parcano"
+                                    value="{{ $stcInData->parcano }}"
+                                    required>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Malzeme Adı</label>
+                                    <input type="text" class="form-control" name="malzemeadi"
+                                    value="{{ $stcInData->malzemeadi }}"
+                                    required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Miktar</label>
+                                    <input type="int" class="form-control" name="miktar" value="{{ $stcInData->miktar }}"
+                                           required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Kritik Seviye</label>
+                                    <input type="int" class="form-control" name="kritikseviye" value="{{ $stcInData->kritikseviye }}"
+                                           required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Açıklama</label>
+                                    <textarea class="form-control" name="note" value="{{ $stcInData->note }}" rows="3"></textarea>
+                                </div>
+                                
+                              
+                               
+                                <div class="form-group">
+                                    <label>Marka</label>
+                                    <input type="text" class="form-control" name="marka" value="{{ $stcInData->marka }}"
+                                           required>
+                                           
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <label>Model</label>
+                                    <input type="text" class="form-control" name="model" value="{{ $stcInData->model }}"
+                                           required>
+                                </div>
+                               
+                                <!--<div class="form-group">
+                                    <label>Sağlayıcı Adı</label>
                                     <select class="form-control" name="supname" required>
-                                        <option value="" required>-- Select --</option>
-                                        @foreach($suppData as $suppdata)
-                                            <option value="{{ $suppdata->id }}" {{ ($suppdata->id == $stcInData->supid)?  'selected= "selected"': '' }}>{{ $suppdata->name }}</option>
-                                        @endforeach
+                                        <option value="" required>Select</option>
+                                        {{--@foreach($record as $rec)
+                                            <option >{{ $rec->projeadi }}</option>
+                                        @endforeach --}}
                                     </select>
                                     <br>
-                                    <a href="{{ url('registration') }}" class="btn btn-primary">+ Add New</a>
-                                </div>
+                                   
+                                </div>-->
                                 <div class="form-group">
-                                    <label>Lot Name</label>
-                                    <input type="text" class="form-control" name="lotname"
-                                           value="{{ $stcInData->lotname }}"
+                                    <label>Seri No</label>
+                                    <input type="text" class="form-control" name="serino" value="{{ $stcInData->serino }}"
                                            required>
                                 </div>
                                 <div class="form-group">
-                                    <label>No of Coil</label>
-                                    <input type="number" class="form-control" name="coil" value="{{ $stcInData->coil }}"
+                                    <label>Fiyat</label>
+                                    <input type="int" class="form-control" name="fiyat" value="{{ $stcInData->fiyat }}"
                                            required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Note</label>
-                                    <textarea class="form-control" name="note"
-                                              rows="3">{{ $stcInData->note }}</textarea>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <label>Total Weight</label>
-                                <div class="form-group input-group">
-                                    <input type="number" id="inputTon" onkeyup="rentCalculation()" class="form-control"
-                                           name="tweight" step="any" value="{{ $stcInData->tweight }}" required>
-                                    <span class="input-group-addon">Ton</span>
-                                </div>
-                                <label>Rent Per Ton</label>
-                                <div class="form-group input-group">
-                                    <input type="number" id="rent" class="form-control" value="{{ $stcInData->rent }}"
-                                           name="rent"
-                                           step="any"
+                                    <label>Tedarikçi</label>
+                                    <input type="text" class="form-control" name="tedarikci" value="{{ $stcInData->tedarikci }}"
                                            required>
-                                    <span class="input-group-addon">Taka</span>
                                 </div>
-                                <label>Stock Total Rent</label>
-                                <div class="form-group input-group">
-                                    <input type="number" id="totalPrice" class="form-control" name="totalrent"
-                                           step="any" value="{{ $stcInData->totalrent }}" required>
-                                    <span class="input-group-addon">Taka</span>
+                                <div class="form-group">
+                                    <label>Sipariş Veren</label>
+                                    <input type="text" class="form-control" name="siparisveren" value="{{ $stcInData->siparisveren }}"
+                                           required>
                                 </div>
-                                <script>
-                                    function rentCalculation() {
-                                        var ton = document.getElementById('inputTon').value;
-                                        var rent = document.getElementById('rent').value;
-                                        document.getElementById('totalPrice').value = ton * rent;
-                                    }
-                                </script>
-                                <label>No of Truck Use</label>
-                                <div class="form-group input-group">
-                                    <input type="number" class="form-control" name="truck"
-                                           value="{{ $stcInData->truck }}" required>
+                                
+                                <div class="form-group">
+                                    <label>Proje Adı</label>
+                                    <input type="text" class="form-control" name="projeadi" value="{{ $stcInData->projeadi }}"
+                                           required>
                                 </div>
-                                <button type="submit" class="btn btn-primary"> Update StockIn</button>
-                            </div>
+                                <button type="submit" class="btn btn-primary"> Stoğu Güncelle</button>
                         </form>
-                        <!-- /.col-lg-6 (nested) -->
-
-                        <!-- /.col-lg-6 (nested) -->
                     </div>
                     <!-- /.row (nested) -->
                 </div>

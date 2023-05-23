@@ -65,7 +65,7 @@
                                 <td>{{ $count }}</td>
                                 <td>{{ $data->parcano }}</td>
                                 <td>{{ $data->malzemeadi }}</td>
-                                <td>{{ $data->miktar }} + {{ }}</td>
+                                <td>{{ $data->miktar }}</td>
                                 <td>{{ $data->marka }}</td>
                                 <td>{{ $data->model }}</td>
                                 <td>{{ $data->projeadi }}</td>
