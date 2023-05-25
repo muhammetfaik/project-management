@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                        <!-- <div class="huge">12</div>-->
-                                       <div  style="font-weight: bold; font-size: 50px;">{{ $data->projeadi }}</div>
+                                       <div  style="font-weight: bold; font-size: 50px;">{{ mb_strtoupper($data->projeadi) }}</div>
                                     </div>
                                 </div>
                             </div>

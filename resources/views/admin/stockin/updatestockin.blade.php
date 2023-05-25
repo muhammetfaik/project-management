@@ -56,7 +56,7 @@
                                 
                                 <div class="form-group">
                                     <label>Açıklama</label>
-                                    <textarea class="form-control" name="note" value="{{ $stcInData->note }}" rows="3"></textarea>
+                                    <input class="form-control" name="note" value="{{ $stcInData->note }}" rows="3">
                                 </div>
                                 
                               
