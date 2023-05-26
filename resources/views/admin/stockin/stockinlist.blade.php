@@ -71,7 +71,7 @@
                                 <td>{{ $data->projeadi }}</td>
                                 <td>{{ $data->serino }}</td>
                                 <td>{{ $data->fiyat }}</td>
-                                <td>{{ $data->tedarikci }}</td>
+                                <td>{{ $data->supname }}</td>
                                 <td>{{ $data->siparisveren }}</td>
                                 <td>{{ $data->created_at }}</td>
                                 
