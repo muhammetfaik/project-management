@@ -44,10 +44,7 @@
                         <tr>
                             <th>S/L</th>
                             <th>İsim</th>
-                            <th>Görev</th>
-                            <th>Telefon No</th>
                             <th>Email</th>
-                            <th>Adres</th>
                             <th>Sil/Düzenle</th>
                         </tr>
                         </thead>
@@ -57,10 +54,8 @@
                             <tr>
                                 <td>{{ $count }}</td>
                                 <td>{{ $data->name }}</td>
-                                <td>{{ $data->rolename }}</td>
-                                <td>{{ $data->cell }}</td>
                                 <td>{{ $data->email }}</td>
-                                <td>{{ $data->address }}</td>
+                             
                                 <td class="text-center"><a href="{{ url('updateuser/'.$data->id) }}" class="btn btn-primary">Düzenle</a> <a href="{{ url('deleteuser/'.$data->id) }}" class="btn btn-danger" onclick="if (!confirm('Are you sure to delete this item?')) { return false }">Sil</a> </td>
                                 <?php $count += 1; ?>
                             </tr>

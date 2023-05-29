@@ -137,10 +137,7 @@ class UserController extends Controller
 
     public function userList()
     {
-        $result = DB::table('registration')
-            ->join('role', 'registration.roleid', '=', 'role.id')
-            ->select('registration.*', 'role.name as rolename')
-            ->get();
+        $result = DB::table('tbl_users')->get();
 //        dd($result);
         return view('admin.users.userlist', compact('result'));
     }
