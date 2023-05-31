@@ -126,3 +126,10 @@ Route::get('/invoice/{id}', 'UserController@invoice');
 Route::get('/kritikseviye','UserController@kritikseviye');
 
 Route::get('/showstockinone/{id}','UserController@showstockinone');
+
+
+Route::get('/loggin',function(){
+    Log::info('API endpoint abuse',[
+        'user_id' => 1
+    ]);
+});

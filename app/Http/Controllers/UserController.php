@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use PDF;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -25,6 +26,31 @@ class UserController extends Controller
         } else {
             return redirect('/')->with('loginMsg', 'Username or Password did not matched !!');
         }
+    }
+
+    public function show($id)
+    {
+        Log::info('User failed to login.',['id' => $user->id]);
+        
+        return view('user.profile',['user'=> User::findOrFail($id)]);
+    }
+
+    public function logshow(){
+        Log::info('Info logging tutorial',['id' => 4]);
+        Log::warning('warning logging tutorial');
+        Log::notice('notice logging tutorial');
+        Log::error('error logging tutorial');
+        Log::debug('debug logging tutorial');
+        Log::critical('critical logging tutorial');
+        Log::emergency('emergency logging tutorial');
+        Log::alert('alert logging tutorial');
+
+        echo "welcome";
+    }
+
+    public function index()
+    {
+        Log::info('Info logging tutorial');
     }
 
     /*
