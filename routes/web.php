@@ -1,5 +1,6 @@
 <?php
 
+use Spatie\Activitylog\Models\Activity;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -133,3 +134,13 @@ Route::get('/loggin',function(){
         'user_id' => 1
     ]);
 });
+
+Route::get("/log",function(){
+    Log::channel('i_love_this_logging_thing')->debug("Action log debug test",['my-string' => 'log me',"run"]);
+    return ["result" => true];
+});
+
+Route::get("/logging",function(){
+    return Activity::all();
+});
+
