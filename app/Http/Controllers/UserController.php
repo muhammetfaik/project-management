@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use DB;
 use PDF;
 use Illuminate\Support\Facades\Log;
-
+use Spatie\Activitylog\Models\Activity;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Auth;
+use App\User;
 class UserController extends Controller
 {
     public function login(Request $request)
@@ -292,10 +295,21 @@ class UserController extends Controller
         $fiyat = $request->fiyat;
         $tedarikci = $request->tedarikci;
         $siparisveren = $request->siparisveren;
+        //LOGGİNG KAYDINI BURADA AYARLA
+        dd(User::getInstance());
+        dd($user = Auth::user());
+        activity()->causedBy($user)->withProperties(['properties' => $user])->log('Look, I logged something');
 
+        $lastLoggedActivity = Activity::all()->last();
+
+        $lastLoggedActivity->subject;
+        $lastLoggedActivity->causer;
+        $lastLoggedActivity->getExtraProperty('customProperty');
+
+        $lastLoggedActivity->description;
 
         $result = DB::update('update stockin set parcano = ?, malzemeadi = ?, miktar = ?, kritikseviye = ?, note = ?, marka = ?, model = ?, projeadi = ?,serino = ?,fiyat = ?,tedarikci = ?,siparisveren = ? where id = ?', [$parcano, $malzemeadi, $miktar, $kritikseviye, $note, $marka, $model, $projeadi, $serino, $fiyat, $tedarikci, $siparisveren, $id]);
-
+        
         if ($result != false) {
             return redirect('/stockinlist')->with('updateStockInMsg', 'StockIn Updated Successfully');
         } else {
@@ -457,11 +471,12 @@ class UserController extends Controller
         }
     }
 
-    public function show($projeadi)
+   /* public function show($projeadi)
     {
         $sonuc = DB::table('stockin')->where('projeadi', '=', $projeadi)->get();
         return view('admin.stockin.fixture',compact('sonuc'));
     }
+    */
     /*
      * Invoice
      */

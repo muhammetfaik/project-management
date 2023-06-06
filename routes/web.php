@@ -124,23 +124,23 @@ Route::get('deleterole/{id}', 'UserController@deleteRole');
 Route::get('/invoice/{id}', 'UserController@invoice');
 
 //test
-Route::get('/kritikseviye','UserController@kritikseviye');
+//Route::get('/kritikseviye','UserController@kritikseviye');
 
-Route::get('/showstockinone/{id}','UserController@showstockinone');
+//Route::get('/showstockinone/{id}','UserController@showstockinone');
 
 
-Route::get('/loggin',function(){
+/*Route::get('/loggin',function(){
     Log::info('API endpoint abuse',[
         'user_id' => 1
     ]);
-});
+});*/
 
-Route::get("/log",function(){
+/*Route::get("/log",function(){
     Log::channel('i_love_this_logging_thing')->debug("Action log debug test",['my-string' => 'log me',"run"]);
     return ["result" => true];
 });
 
 Route::get("/logging",function(){
     return Activity::all();
-});
+});*/
 

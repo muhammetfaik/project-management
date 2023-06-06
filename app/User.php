@@ -11,6 +11,10 @@ class User extends Authenticatable
 {
     use Notifiable,LogsActivity;
 
+    protected static $logAttributes = ['name','email'];
+
+    protected static $recordEvents = ['created'];
+    
     /**
      * The attributes that are mass assignable.
      *
