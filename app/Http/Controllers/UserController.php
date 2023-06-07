@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Log;
 use Spatie\Activitylog\Models\Activity;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Auth;
-use App\User;
+use Illuminate\Support\Facades\Session;
+
 class UserController extends Controller
 {
     public function login(Request $request)
@@ -296,17 +297,16 @@ class UserController extends Controller
         $tedarikci = $request->tedarikci;
         $siparisveren = $request->siparisveren;
         //LOGGİNG KAYDINI BURADA AYARLA
-        dd(User::getInstance());
-        dd($user = Auth::user());
-        activity()->causedBy($user)->withProperties(['properties' => $user])->log('Look, I logged something');
+        $sessionuser = Session::get('admin_name');
+        activity()->withProperties(['properties' => $sessionuser])->log('Look, I logged something');
 
-        $lastLoggedActivity = Activity::all()->last();
+        //$lastLoggedActivity = Activity::all()->last();
 
-        $lastLoggedActivity->subject;
-        $lastLoggedActivity->causer;
-        $lastLoggedActivity->getExtraProperty('customProperty');
+        //$lastLoggedActivity->subject;
+        //$lastLoggedActivity->causer;
+        //$lastLoggedActivity->getExtraProperty('customProperty');
 
-        $lastLoggedActivity->description;
+        //$lastLoggedActivity->description;
 
         $result = DB::update('update stockin set parcano = ?, malzemeadi = ?, miktar = ?, kritikseviye = ?, note = ?, marka = ?, model = ?, projeadi = ?,serino = ?,fiyat = ?,tedarikci = ?,siparisveren = ? where id = ?', [$parcano, $malzemeadi, $miktar, $kritikseviye, $note, $marka, $model, $projeadi, $serino, $fiyat, $tedarikci, $siparisveren, $id]);
         
