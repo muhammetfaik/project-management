@@ -298,8 +298,8 @@ class UserController extends Controller
         $siparisveren = $request->siparisveren;
         //LOGGİNG KAYDINI BURADA AYARLA
         $sessionuser = Session::get('admin_name');
-        activity()->withProperties(['properties' => $sessionuser])->log('Look, I logged something');
-
+        activity()->withProperties(['properties' => $sessionuser])->log("Miktar :" .$miktar);
+        
         //$lastLoggedActivity = Activity::all()->last();
 
         //$lastLoggedActivity->subject;
