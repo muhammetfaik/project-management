@@ -284,6 +284,8 @@ class UserController extends Controller
 
     public function updateStockIn(Request $request, $id)
     {
+
+        $eskimiktar = DB::table('stockin')->where('id', $id)->value('miktar');
         $parcano = $request->parcano;
         $malzemeadi = $request->malzemeadi;
         $miktar = $request->miktar;
@@ -297,9 +299,17 @@ class UserController extends Controller
         $tedarikci = $request->tedarikci;
         $siparisveren = $request->siparisveren;
         //LOGGİNG KAYDINI BURADA AYARLA
+        
+        $eskimiktar = intval($eskimiktar);
+
+        $fark = $miktar - $eskimiktar;
+        $recordmiktar = DB::table('activity_log')->where('id','11')->pluck('description');
         $sessionuser = Session::get('admin_name');
         activity()->withProperties(['properties' => $sessionuser])->log("Miktar :" .$miktar);
-        
+
+
+
+
         //$lastLoggedActivity = Activity::all()->last();
 
         //$lastLoggedActivity->subject;
