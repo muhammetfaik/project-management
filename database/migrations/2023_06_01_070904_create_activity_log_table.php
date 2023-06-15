@@ -20,6 +20,8 @@ class CreateActivityLogTable extends Migration
             $table->integer('causer_id')->nullable();
             $table->string('causer_type')->nullable();
             $table->text('properties')->nullable();
+            $table->string('ip_address');
+           
             $table->timestamps();
 
             $table->index('log_name');

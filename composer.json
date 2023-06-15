@@ -12,7 +12,9 @@
         "barryvdh/laravel-debugbar": "3.2.5",
         "barryvdh/laravel-dompdf": "^0.8.4",
         "fideloper/proxy": "^4.0",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "5.8.*",
+        "laravel/telescope": "^2.0",
         "laravel/tinker": "^1.0",
         "monolog/monolog": "^1.27",
         "shuchkin/simplexlsx": "^0.8.33",
@@ -34,7 +36,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope"
+            ]
         }
     },
     "autoload": {

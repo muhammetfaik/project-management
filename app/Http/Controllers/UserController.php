@@ -10,15 +10,27 @@ use Spatie\Activitylog\Models\Activity;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Auth;
 use Illuminate\Support\Facades\Session;
+use App\Services\ActivityService;
 
 class UserController extends Controller
 {
+    protected $activityService;
+
+    public function __construct(ActivityService $activityService)
+    {
+        $this->activityService = $activityService;
+        $this->middleware('guest');
+    }
+
+  
     public function login(Request $request)
     {
         $email = $request->input('email');
 //        $email = $request->email;
         $pass = md5($request->input('password'));
 
+        $user_activity = 'user attempted to login';
+        $this->activityService->enterActivity($user_activity,$email);
 //        $results = DB::select('select * from tbl_users where email = :email', ['email' => $email]);
         $results = DB::table('tbl_users')
             ->where('email', $email)
@@ -177,7 +189,6 @@ class UserController extends Controller
         $userData = DB::table('registration')->where('id', $id)->first();
         $roleData = DB::select('select * from role');
         return view('admin.users.updateuser', ['userData' => $userData, 'roleData' => $roleData]);
-
     }
 
     public function updateUser(Request $request, $id)
@@ -303,20 +314,20 @@ class UserController extends Controller
         $eskimiktar = intval($eskimiktar);
 
         $fark = $miktar - $eskimiktar;
-        $recordmiktar = DB::table('activity_log')->where('id','11')->pluck('description');
+
+        $recordmiktar = DB::table('activity_log')->where('id',$id)->pluck('description');
         $sessionuser = Session::get('admin_name');
-        activity()->withProperties(['properties' => $sessionuser])->log("Miktar :" .$miktar);
+        activity()->withProperties(['properties' => $sessionuser])->log("Miktar :" .$miktar. "  Fark :" .$fark);
+        
+        
+        
+        $lastLoggedActivity = Activity::all()->last();
 
+        $lastLoggedActivity->subject;
+        $lastLoggedActivity->causer;
+        $lastLoggedActivity->getExtraProperty('customProperty');
 
-
-
-        //$lastLoggedActivity = Activity::all()->last();
-
-        //$lastLoggedActivity->subject;
-        //$lastLoggedActivity->causer;
-        //$lastLoggedActivity->getExtraProperty('customProperty');
-
-        //$lastLoggedActivity->description;
+        $lastLoggedActivity->description;
 
         $result = DB::update('update stockin set parcano = ?, malzemeadi = ?, miktar = ?, kritikseviye = ?, note = ?, marka = ?, model = ?, projeadi = ?,serino = ?,fiyat = ?,tedarikci = ?,siparisveren = ? where id = ?', [$parcano, $malzemeadi, $miktar, $kritikseviye, $note, $marka, $model, $projeadi, $serino, $fiyat, $tedarikci, $siparisveren, $id]);
         

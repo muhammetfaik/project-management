@@ -55,6 +55,9 @@
             <li>
                 <a href="{{ url('registration') }}"><i class="fa fa-user fa-fw"></i> Kayıt</a>
             </li>
+            <li>
+                <a href="{{ url('registration') }}"><i class="fa fa-user fa-fw"></i> Log Kaydı</a>
+            </li>
 
         </ul>
     </div>

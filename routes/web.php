@@ -144,3 +144,7 @@ Route::get("/logging",function(){
     return Activity::all();
 });*/
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
