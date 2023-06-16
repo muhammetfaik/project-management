@@ -46,24 +46,11 @@ class UserController extends Controller
 
     public function show($id)
     {
-        Log::info('User failed to login.',['id' => $user->id]);
         
         return view('user.profile',['user'=> User::findOrFail($id)]);
     }
 
-    public function logshow(){
-        Log::info('Info logging tutorial',['id' => 4]);
-        Log::warning('warning logging tutorial');
-        Log::notice('notice logging tutorial');
-        Log::error('error logging tutorial');
-        Log::debug('debug logging tutorial');
-        Log::critical('critical logging tutorial');
-        Log::emergency('emergency logging tutorial');
-        Log::alert('alert logging tutorial');
-
-        echo "welcome";
-    }
-
+    
     public function index()
     {
         Log::info('Info logging tutorial');
@@ -310,6 +297,8 @@ class UserController extends Controller
         $tedarikci = $request->tedarikci;
         $siparisveren = $request->siparisveren;
         //LOGGİNG KAYDINI BURADA AYARLA
+
+        Log::info("Stok Kaydı Güncellendi: {$miktar}", ['miktar' => $miktar]);
         
         $eskimiktar = intval($eskimiktar);
 
