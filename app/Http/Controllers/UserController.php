@@ -22,7 +22,7 @@ class UserController extends Controller
         $this->middleware('guest');
     }
 
-  
+
     public function login(Request $request)
     {
         $email = $request->input('email');
@@ -47,7 +47,7 @@ class UserController extends Controller
     public function show($id)
     {
         Log::info('User failed to login.',['id' => $user->id]);
-        
+
         return view('user.profile',['user'=> User::findOrFail($id)]);
     }
 
@@ -102,7 +102,7 @@ class UserController extends Controller
     public function projelersave(Request $request)
     {
         $projeadi = $request->projeadi;
-       
+
 
         $results = DB::insert('insert into Projeler(projeadi) values (?)', [$projeadi]);
 
@@ -175,7 +175,7 @@ class UserController extends Controller
             return redirect('/registration')->with('regErrMsg', 'Registration Failed!!');
         }
     }
-    
+
 
     public function userList()
     {
@@ -243,7 +243,7 @@ class UserController extends Controller
         $tedarikci = $request->tedarikci;
         $siparisveren = $request->siparisveren;
         $supname = $request->supname;
-        
+
 
 
 
@@ -273,7 +273,7 @@ class UserController extends Controller
         $miktar = DB::table('stockin')->pluck('miktar');
         $kritikseviye = DB::table('stockin')->pluck('kritikseviye');
         //select * from stockin where kritikseviye > miktar;
-        
+
 
         for($i = 0; $i < $result->count(); $i++ )
         {
@@ -282,7 +282,7 @@ class UserController extends Controller
                 $result[$i]->miktarasildi = "(Miktar aşıldı)";
 
             }
-            
+
         }
         return view('admin.stockin.stockinlist', compact('result'));
     }
@@ -312,19 +312,23 @@ class UserController extends Controller
         $tedarikci = $request->tedarikci;
         $siparisveren = $request->siparisveren;
         //LOGGİNG KAYDINI BURADA AYARLA
-        
+
         $eskimiktar = intval($eskimiktar);
 
         $fark = $miktar - $eskimiktar;
 
+
+
         $recordmiktar = DB::table('activity_log')->where('id',$id)->pluck('description');
         $sessionuser = Session::get('admin_name');
         activity()->withProperties(['properties' => $sessionuser])->log("Miktar :" .$miktar. "  Fark :" .$fark);
-        
-        
 
-        Log::info("Stok Kaydı Güncellendi: {$miktar} Kullanıcı kaydı: {$sessionuser}", ['miktar' => $miktar, 'sessionuser' => $sessionuser]);
-        
+
+
+        Log::info("Stok Kaydı Güncellendi: {$miktar} Kullanıcı kaydı: {$sessionuser} Fark: {$fark}", ['miktar' => $miktar, 'sessionuser' => $sessionuser]);
+
+
+
         $lastLoggedActivity = Activity::all()->last();
 
         $lastLoggedActivity->subject;
@@ -334,7 +338,7 @@ class UserController extends Controller
         $lastLoggedActivity->description;
 
         $result = DB::update('update stockin set parcano = ?, malzemeadi = ?, miktar = ?, kritikseviye = ?, note = ?, marka = ?, model = ?, projeadi = ?,serino = ?,fiyat = ?,tedarikci = ?,siparisveren = ? where id = ?', [$parcano, $malzemeadi, $miktar, $kritikseviye, $note, $marka, $model, $projeadi, $serino, $fiyat, $tedarikci, $siparisveren, $id]);
-        
+
         if ($result != false) {
             return redirect('/stockinlist')->with('updateStockInMsg', 'StockIn Updated Successfully');
         } else {
@@ -345,7 +349,7 @@ class UserController extends Controller
     public function showstockinone($id)
     {
         $result = DB::select('select * from stockin  where id = ?', [$id]);
-        return view('admin.stockin.showstockin')->with(['result' => $result]);    
+        return view('admin.stockin.showstockin')->with(['result' => $result]);
     }
 
     public function deleteStockIn($id)
@@ -410,7 +414,7 @@ class UserController extends Controller
 
     }
 
-  
+
 
     public function showagem()
     {
@@ -515,7 +519,7 @@ class UserController extends Controller
         return $pdf->stream('invoice.pdf');
 //        return $pdf->download('invoice.pdf');
     }
-    
-    
-    
+
+
+
 }
