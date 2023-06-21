@@ -325,7 +325,7 @@ class UserController extends Controller
 
 
 
-        Log::info("Stok Kaydı Güncellendi: {$miktar} Kullanıcı kaydı: {$sessionuser} Fark: {$fark}", ['miktar' => $miktar, 'sessionuser' => $sessionuser]);
+        Log::info("{$parcano} no'lu Stok Kaydı Güncellendi: {$miktar} Kullanıcı kaydı: {$sessionuser} Fark: {$fark}", ['parcano' => $parcano,'miktar' => $miktar, 'sessionuser' => $sessionuser]);
 
 
 
