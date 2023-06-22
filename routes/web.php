@@ -148,3 +148,4 @@ Route::get("/logging",function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('export','UserController@export')->name('export');

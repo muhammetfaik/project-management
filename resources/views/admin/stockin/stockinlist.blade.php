@@ -34,8 +34,9 @@
                 <div class="panel-heading role-list-info-header">
                     <p>Stok Listesi</p>
                     <a href="{{ url('/stockin') }}" class="btn btn-success">+ Stok Ekle</a>
-                </div>
+                    <a href="{{ url('/export') }}" class="btn btn-primary">Excel Tablosu Oluştur</a>
 
+                </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">

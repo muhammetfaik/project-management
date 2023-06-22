@@ -11,6 +11,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use Auth;
 use Illuminate\Support\Facades\Session;
 use App\Services\ActivityService;
+use App\Exports\StockinExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -518,6 +520,11 @@ class UserController extends Controller
         $pdf = PDF::loadView('admin.invoice.invoice', compact('data'));
         return $pdf->stream('invoice.pdf');
 //        return $pdf->download('invoice.pdf');
+    }
+
+    public function export()
+    {
+        return Excel::download(new StockinExport,'stokckin.xlsx');
     }
 
 
