@@ -35,7 +35,6 @@
                     <p>Stok Listesi</p>
                     <a href="{{ url('/stockin') }}" class="btn btn-success">+ Stok Ekle</a>
                     <a href="{{ url('/export') }}" class="btn btn-primary">Excel Tablosu Oluştur</a>
-
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
