@@ -41,7 +41,7 @@
 <div id="soft-all-wrapper">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar navbar-default navbar-static-top"  role="navigation" style="margin-bottom: 0">
     @include('admin.inc.header')
     <!-- /.navbar-top-links -->
     @include('admin.inc.leftMenu')
