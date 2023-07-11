@@ -46,12 +46,12 @@ class UserController extends Controller
         }
     }
 
-    public function show($id)
+    /*public function show($id)
     {
         Log::info('User failed to login.',['id' => $user->id]);
 
         return view('user.profile',['user'=> User::findOrFail($id)]);
-    }
+    }*/
 
     public function logshow(){
         Log::info('Info logging tutorial',['id' => 4]);
@@ -502,12 +502,11 @@ class UserController extends Controller
         }
     }
 
-   /* public function show($projeadi)
+   public function show($projeadi)
     {
         $sonuc = DB::table('stockin')->where('projeadi', '=', $projeadi)->get();
         return view('admin.stockin.fixture',compact('sonuc'));
     }
-    */
     /*
      * Invoice
      */

@@ -42,6 +42,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top"  role="navigation" style="margin-bottom: 0">
+    <img src="{{asset('image/abramak_logo_eng1.png')}}">
     @include('admin.inc.header')
     <!-- /.navbar-top-links -->
     @include('admin.inc.leftMenu')
